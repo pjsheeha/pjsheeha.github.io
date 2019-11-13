@@ -3,7 +3,7 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 
 mainpage.location.href=page;
 return;
-	}
+}
 else{
 
 mainpage.location.href="index.html";
