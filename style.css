@@ -88,7 +88,7 @@ font-weight: bold;
   cursor: pointer;
   font-size: 15px;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
 /* Style the buttons inside the tab */
 .tab button {
     padding: 15px 16px 0px 16px;
