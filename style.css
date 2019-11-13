@@ -88,8 +88,7 @@ font-weight: bold;
   cursor: pointer;
   font-size: 15px;
 }
-@media only screen and (max-width: 768px) {
-/* Style the buttons inside the tab */
+@media only screen and (max-device-width : 640px) {
 .tab button {
     padding: 15px 16px 0px 16px;
   background-color: #000100;
@@ -108,6 +107,28 @@ font-weight: bold;
 font-weight: bold;
   cursor: pointer;
   font-size: 8px;
+}
+}
+
+@media only screen and (max-device-width: 768px) {
+.tab button {
+    padding: 15px 16px 0px 16px;
+  background-color: #000100;
+  border-radius: 25px;
+      border: 5px solid #fff;
+
+  display: block;
+  background-color: #000100;
+  color: white;
+  padding: 22px 16px;
+  width: 100%;
+  outline: none;
+  text-align: left;
+    color:#FF715B;
+  font-family: "Courier", sans-serif;
+font-weight: bold;
+  cursor: pointer;
+  font-size: 9px;
 }
 }
 .tab article {
