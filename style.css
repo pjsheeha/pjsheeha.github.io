@@ -1,0 +1,148 @@
+
+* {box-sizing: border-box;}
+
+
+body {
+  background-image: linear-gradient(45deg, #db84b3 25%, transparent 25%, transparent 75%, #db84b3 75%), linear-gradient(45deg, #db84b3 25%, #e68fca 25%, #e68fca 75%, #db84b3 75%);
+  background-size: 200px 200px;
+  background-position: 0 0, 100px 100px;
+  font-family: "Courier New";
+
+}
+
+
+h1 {
+  color: #Eee2e3;
+  margin-left: 0px;
+  height:100%;
+  font-size: 40px;
+    font-family: "Courier New";
+
+}
+h2 {
+      padding: 15px 16px 0px 16px;
+  background-color: #000100;
+  border-radius: 25px;
+      border: 5px solid #fff;
+
+  display: block;
+  background-color: #000100;
+  color: white;
+  padding: 22px 16px;
+  color: #Eee2e3;
+  margin-left: 20px;
+    font-family: "Courier New", sans-serif;
+
+}
+iframe {
+      padding: 15px 16px 0px 16px;
+  background-color: #000100;
+  border-radius: 25px;
+      border: 5px solid #fff;
+
+  display: block;
+  background-color: #000100;
+  color: white;
+  padding: 22px 16px;
+  color: #Eee2e3;
+  margin-left: 20px;
+  font-size: 30px;
+    font-family: "Courier New", sans-serif;
+
+}
+h4 {
+  color: #Eee2e3;
+  text-align: right;
+  font-size: 10px;
+    font-family: "Courier New", sans-serif;
+
+}
+
+
+/* Style the tab */
+.tab {
+  float: left;
+  border: 0px solid #ccc;
+  width: 20%;
+
+  color:#FF715B;
+      font-family: "Courier New", sans-serif;
+
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    padding: 15px 16px 0px 16px;
+  background-color: #000100;
+  border-radius: 25px;
+      border: 5px solid #fff;
+
+  display: block;
+  background-color: #000100;
+  color: white;
+  padding: 22px 16px;
+  width: 100%;
+  outline: none;
+  text-align: left;
+    color:#FF715B;
+  font-family: "Courier", sans-serif;
+font-weight: bold;
+  cursor: pointer;
+  font-size: 17px;
+}
+.tab article {
+  background-color: #303616;
+  color: white;
+  padding: 22px 16px;
+  height: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+    color:#EF9D97;
+
+  font-size: 17px;
+}
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #FFD9DA;
+  color:#303616;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  background-color: #Eee2e3;
+    color:#303616;
+
+}
+
+/* Style the tab content */
+.tabcontent {
+  float: left;
+
+  padding:0px 12px;
+  width: 70%;
+  height:100%;
+  border-top:6px black;
+  display: none;
+}
+
+/* Clear floats after the tab */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.header {
+  padding: 5px 16px 0px 16px;
+  background-color: #000100;
+  border-radius: 25px;
+    border: 5px solid #fff;
+
+  color: #FF715B;
+}
+
+.vl {
+  border-left: 6px solid #EA638C;
+  border-style: dotted;
+  height: 0px;
+}
