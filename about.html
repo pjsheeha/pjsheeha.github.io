@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="description" content="Streamer's Delight">
+<meta name="keywords" content="streamers,delight,streamers delight,perebite">
+<meta name="author" content="perebite">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<head>
+	<style>
+/* Style the buttons */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+color:black;
+  font-family:"courier";
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  color:black;
+    border: 10px solid white;
+  border-radius:25px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  height:100%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+h1 {
+  color: #Eee2e3;
+  margin-left: 0px;
+  height:100%;
+  font-size: 40px;
+    font-family: "Courier New";
+
+
+}
+h2 {
+  background-color: #000100;
+
+
+  display: block;
+  background-color: #000100;
+  color: white;
+ 
+  color: #Eee2e3;
+    font-family: "Courier New", sans-serif;
+
+}
+iframe {
+      padding: 15px 16px 0px 16px;
+
+border:0;
+  display: block;
+  padding: 22px 16px;
+  margin-left: 20px;
+  font-size: 30px;
+    font-family: "Courier New", sans-serif;
+
+}
+h4 {
+  color: #Eee2e3;
+  text-align: right;
+  font-size: 15px;
+    font-family: "Courier New", sans-serif;
+
+}
+p {
+    padding: 0px 0px;
+
+}
+a {
+  color: #Eee2e3;
+  text-align: right;
+  font-size: 15px;
+    font-family: "Courier New", sans-serif;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.btn {
+  border: 5px solid white;
+
+border-radius: 15px 15px 15px 15px;
+  outline: none;
+  font-size:20px;
+  align-items: center;
+  padding: 12px 15px;
+  color:white;
+  font-family: "courier";
+
+  background-color: black;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: #fff;
+  color:black;
+}
+
+
+.btn.active {
+  background-color: #666;
+  color: white;
+}
+</style>
+
+</head>
+
+
+<body style= "background-color: black">
+<h2>Peter is an anti-disciplinary artist constructing alternative computer-based applications, performances and video/games. He negotiates with and researches spaces in gaming communities, and makes work which playfully aims to challenge player’s perceptions of familiarity, comfort, and pleasure/engagement. He is currently pursuing a BFA from Carnegie Mellon University.  </h2>
+
+<center>
+<button id="myBtn" class = "btn">CV/Resume: Click here</button>
+</center>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content" >
+    <span class="close">&times;</span>
+    <iframe src="frameCV.html" width="80%" height = "80%"></iframe>
+  </div>
+
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    window.open("./frameCV.html");
+  }
+  else{
+  modal.style.display = "block";
+}
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+    	<script src="javascript.js"></script>
+
+</body>
+</html>

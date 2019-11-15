@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="description" content="Streamer's Delight">
+<meta name="keywords" content="streamers,delight,streamers delight,perebite">
+<meta name="author" content="perebite">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="categories.js"></script>
+
+<head>
+	<style>
+/* Style the buttons */
+
+.filterDiv {
+
+  color: #ffffff;
+  font-family: "Courier";
+
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.container {
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+
+
+.btn {
+  border-top: 5px solid white;
+    border-bottom: 5px solid black;
+    border-left: 5px solid white;
+    border-right: 5px solid white;
+border-radius: 15px 15px 0px 0px;
+  outline: none;
+  font-size:5%;
+  padding: 12px 5px;
+  color:white;
+  font-family: "courier";
+
+  background-color: black;
+  cursor: pointer;
+}
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+
+  font-family:"courier";
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+    border: 15px solid white;
+  border-radius:25px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: #fff;
+  color:black;
+}
+h1:hover {
+  cursor:pointer;
+  text-decoration: underline;
+}
+
+img {
+  display: block;
+  max-width:40%;
+  max-height:40%;
+  width: auto;
+  height: auto;
+}
+.btn.active {
+  background-color: #666;
+  color: white;
+}
+.democlass {
+  color: red;
+}
+</style>
+
+</head>
+
+
+<body style = "background-color: black" >
+
+<div id="myBtnContainer">
+  <button class="btn active" onclick="filterSelection('all')"> ⬇ Show all</button>
+  <button class="btn" onclick="filterSelection('games')"> ⬇ Games</button>
+  <button class="btn" onclick="filterSelection('performances')"> ⬇ Performances</button>
+  <button class="btn" onclick="filterSelection('installations')"> ⬇ Installation</button>
+  <button class="btn" onclick="filterSelection('images')"> ⬇ Images</button>
+    <button class="btn" onclick="filterSelection('essays')"> ⬇ Essays</button>
+      <button class="btn" onclick="filterSelection('videos')"> ⬇ Videos</button>
+        <button class="btn" onclick="filterSelection('animations')"> ⬇ Animations</button>
+          <button class="btn" onclick="filterSelection('sculptures')"> ⬇ Sculptures</button>
+            <button class="btn" onclick="filterSelection('webpages')"> ⬇ Webpages</button>
+
+
+
+
+
+
+</div>
+
+<p id ="text"></p>
+  <!-- Modal content -->
+<div id="myModal" class="modal" >
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p id = "title">The title of the work.</p>
+    <p id = "date">The date of the work.</p>
+
+    <p id = "descriptor">the text in the Modal..</p>
+    <div id = "imgTags"></div>
+
+        <div id = "links"></div>
+
+  </div>
+
+</div>
+
+
+
+</body>
+</html>
+  <script src= "javascript2.js"></script>
+
