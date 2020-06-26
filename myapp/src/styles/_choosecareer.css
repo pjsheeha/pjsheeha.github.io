@@ -1,0 +1,7 @@
+.choice-body {
+    width: 400px;
+    height: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,16 @@
+.avatar-container {
+    width: 110px;
+    height: 110px;
+    border-radius: 60px;
+    overflow: hidden;
+    background-color: var(--game-green);
+    border-bottom: 4px solid var(--game-outline);
+    position: absolute;
+    left: 24px;
+    top: 24px;
+}
+
+.avatar-image {
+    width: 100%;
+    height: 100%;
+}

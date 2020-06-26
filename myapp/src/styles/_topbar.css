@@ -1,0 +1,18 @@
+#top-bar {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    background-color: var(--game-green);
+    border: 4px solid var(--game-outline);
+    padding-left: 140px;
+}
+
+.top-bar-element {
+    font-size: 32px;
+    padding: 8px;
+    border-right: 4px solid var(--game-outline);
+}
+
+.top-bar-element:first-of-type {
+    border-left: 4px solid var(--game-outline);
+}
