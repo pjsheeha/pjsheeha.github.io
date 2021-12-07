@@ -1,4 +1,7 @@
 var cats = [
+
+{title: "The Bacchanalian Ones", date: "Jun 2021", tags:[ "webpages"],description: "The Bacchanalian Ones combines historical myth with a satirical mash-up of the powerful self-absorbed who preen and wallow in a banal spectacle of their own creation. In a fantastically opulent setting of unrestrained hedonism, political, religious, and military leaders with ghoulish, bouffonesque appearances are surrounded by social elite sycophants like the devotees of the cults of Bacchus and Dionysus. A VR experience, this was a project worked on with Federico Solmi Studio as part of The Bathhouse series, where viewers donned a VR mask and played in the gallery.", imgs : ["images/BachhanlianOnes1.jpeg","images/BachhanlianOnes2.jpeg","images/BachhanlianOnes3.jpeg",], links : ["https://www.federicosolmi.com/the-bacchanalian-ones",]},
+
 {title: "Cyberpunk: Capital Vol 1", date: "Dec 2020", tags:[ "webpages"],description: "Cyberpunk Capital is a work in progress translation of Marx's Capital Volume 1 by Johnny Silverhand, a character from CDProjektRed's 'Cyberpunk 2077.' A parody of the anti-capitalist satire of Cyberpunk 2077, that completely misses the point of cyberpunk in its production and interests. Available for view on the internet.", imgs : [], links : ["https://perebite.com/cyberpunkcapital",]},
 
 {title: "Three American Truths", date: "May 2020", tags:[ "webpages"],description: "Three American Truths - A three link essay by me.", imgs : [], links : ["https://perebite.com/threeamericantruths.html",]},
