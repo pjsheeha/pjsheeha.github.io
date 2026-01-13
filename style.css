@@ -122,7 +122,7 @@ font-weight: bold;
   background-color: #000100;
   color: white;
   padding: 22px 16px;
-  width: 100%;
+  width: 96px;
   outline: none;
   text-align: left;
     color:#FF715B;
@@ -168,6 +168,9 @@ font-weight: bold;
   display: none;
 }
 
+iframe {
+  height: 60vh
+}
 /* Clear floats after the tab */
 .clearfix::after {
   content: "";
