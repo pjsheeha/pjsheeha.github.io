@@ -22,13 +22,13 @@ class Header extends HTMLElement {
         a {
           font-weight: 700;
           margin: 0 25px;
-          color: #fff;
+          color: #9b9b9b;
           text-decoration: none;
         }
 
         a:hover {
           padding-bottom: 5px;
-          box-shadow: inset 0 -2px 0 0 #fff;
+          box-shadow: inset 0 -2px 0 0 #929292;
         }
       </style>
       <header>
