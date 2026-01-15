@@ -104,11 +104,26 @@ a {
     text-decoration: underline;
 }
 </style>
-
+  <script src="components/header.js" type="text/javascript" defer></script>
+<script>
+// Check if page is in an iframe and hide header if it is
+document.addEventListener('DOMContentLoaded', function() {
+  const isInIframe = window.self !== window.top;
+  
+  if (isInIframe) {
+    const headerElement = document.querySelector('header-component');
+    if (headerElement) {
+      headerElement.style.display = 'none';
+    }
+  }
+});
+</script>
 </head>
 
 
 <body style= "background-color: black">
+    <header-component></header-component>
+
 	<h2>If you enjoy what I'm doing and would like to see more of it, please consider donating to my patreon/clicking on follow and following me on social media @perebite or my mailing list, or just writing me an email at peter@perebite.com and telling me you like what I'm doing! Much appreciated and thank you <3</h2>
   <a href = 'https://www.patreon.com/perebite' target="_new">Link to patreon</a>
 
