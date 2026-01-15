@@ -91,6 +91,7 @@ var span = document.createElement("span");
           a1.textContent = "link " + parseInt(j+1) ;
           a1.target = "_new";
           a1.href = links[z][j];
+          a1.className="link_work"
 
           modalContentLinks.appendChild(a1);
                     modalContentLinks.appendChild(b1);
