@@ -1,123 +1,227 @@
-
 <!DOCTYPE html>
-<meta charset="UTF-8">
-<meta name="description" content="Caxtilteca">
-<meta name="keywords" content="caxtilteca,caxtilteca game,mini rts,perebite">
-<meta name="author" content="perebite">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kolker+Brush&family=Texturina:ital,opsz,wght@0,12..72,100..900;1,12..72,100..900&family=Wellfleet&display=swap" rel="stylesheet">
-
-
+<html lang="en">
 <head>
-<style>
-h1 {
-  color: 'black';
-  font-family: "Texturina", serif;
-  font-optical-sizing: auto;
-  font-weight: 800;
-  font-style: normal;
+  <meta charset="UTF-8">
+  <meta name="description" content="Caxtilteca - A 4 player mini RTS set in colonial Mexico">
+  <meta name="keywords" content="caxtilteca,caxtilteca game,mini rts,perebite">
+  <meta name="author" content="perebite">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="icon" type="image/x-icon" href="images/caxtiltecaico.ico">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kolker+Brush&family=Texturina:ital,opsz,wght@0,12..72,100..900;1,12..72,100..900&family=Wellfleet&display=swap" rel="stylesheet">
+  <title>Caxtilteca - Coming 2027</title>
+  
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      overflow-x: hidden;
+      font-family: "Wellfleet", serif;
+      font-optical-sizing: auto;
+      font-style: normal;
+    }
+
+    h1 {
+      color: black;
+      font-family: "Texturina", serif;
+      font-optical-sizing: auto;
+      font-weight: 800;
+      font-style: normal;
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    h2 {
+      font-family: "Texturina", serif;
+      font-weight: 700;
+      margin-top: 2rem;
+    }
+
+    h3 {
+      font-family: "Texturina", serif;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      font-family: "Kolker Brush", cursive;
+      font-weight: 400;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    main {
+      padding: 25px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .center-top {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 0;
+      text-align: center;
+    }
+
+    .center-bottom {
+      padding: 30px 0;
+      text-align: center;
+    }
+
+    .split-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .instagram-embed {
+      max-width: 540px;
+      margin: 20px auto;
+      min-height: 600px;
+    }
+
+    .button-join {
+      background: black;
+      padding: 15px 30px;
+      color: white;
+      border: none;
+      font-family: "Wellfleet", serif;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .button-join:hover {
+      background: #333;
+    }
+    .title-card {
+      width: 30vw;
+      min-width: 300px;
+      justify-content: center;
+      margin: 0 auto;
+      display: block;
+
+    }
+    /* Mobile styles */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      main {
+        padding: 15px;
+      }
+
+      .split-body {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .center-top {
+        padding: 20px 0;
+      }
+
+      .center-bottom {
+        padding: 20px 0;
+      }
+        
+    }
+    .caxtilteca-page { 
+background-color: #fff0ce;
+background-image: url(images/light-paper-fibers.png);
 
 }
-.subtitle {
-    font-family: "Kolker Brush", cursive;
-  font-weight: 400;
-
-}
-.button-join{
-  background: black;
-    padding: 10px;
-  color:white;
-
-}
-body{
-  margin:0px;
-  padding: 0px;
-  font-family: "Wellfleet", serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-}
-.button-join:hover{
-  cursor:pointer;
-  color:grey;
-}
-.split-body {
-  display: flex;
-}
-main{
-  padding: 25px;
-}
-@media (max-width: 600px) {
-  .split-body {
-    display:block;
-  }
-}
-p {
-  font-size: 20px;
-}
-.center-top {
-  display: flex;
-  justify-content: center;
-            align-items: center;
-            padding: 30px;
-
-}
-.center-bottom {
-  display: block;
-  justify-content: center;
-            align-items: center;
-            padding: 30px;
-
-}
-.yt-embed{
-  padding: 10px;
-            align-items: center;
-          justify-content: center;
-
-}
-</style>
-  <script src="components/header.js" type="text/javascript" defer></script>
-    <script src="components/footer.js" type="text/javascript" defer></script>
-
-
-<title>Caxtilteca - Coming 2027</title>
+  </style>
 </head>
-<body>
-      <header-component></header-component>
+<body class="caxtilteca-page">
+  <header-component></header-component>
 
-<main>
-<h1 class="center-top">Caxtilteca</h1>
-<p class="center-top ">Coming 2027...</p>
+  <main>
+    <img src="images/caxtiltecatitle.png" class="title-card">
+    <p class="center-top">Coming 2027...</p>
 
-<div class="split-body">
-<div >
-</br>
-<h2>About the Game</h2>
-<p>Caxtilteca is a 4 player mini RTS set in  colonial Mexico. Play as Tlaxcalan dukes defending themselves against their former friends and allies for land. The only way to do this is to organize your army of peasants, knights, and towers to the most efficient arrangement for money collection while also constantly juggling your opponents who have the exact same goal.</p>
-  <p>Experience messy pulse pounding multiplayer in the Battle Theatre, reenacting old battles with up to four friends. Master a treacherous landscape in single player Attack or Defense Scenarios, each posing unique challenges and each part of a weaved together story. </p>
-  <h2>Backstory</h2>
-    <p>Long ago, before the Spanish Conquista, a "secret" deal was struck. The Caxtilteca (the Spaniards) would capture their prize, and the tens of thousands who helped would became citizens, not slaves. A great city would be founded for them to rule- the Loyal City of Tlaxcala. They even sailed across the ocean and were granted freedom from tribute from the King himself. 
- </p>
+    <div class="split-body">
+      <div>
+        <h2>About the Game</h2>
+        <p>Caxtilteca is a 4 player mini RTS set in colonial Mexico. Play as Tlaxcalan dukes defending themselves against their former friends and allies for land. The only way to do this is to organize your army of peasants, knights, and towers to the most efficient arrangement for money collection while also constantly juggling your opponents who have the exact same goal.</p>
+        
+        <p>Experience messy pulse pounding multiplayer in the Battle Theatre, reenacting old battles with up to four friends. Master a treacherous landscape in single player Attack or Defense Scenarios, each posing unique challenges and each part of a weaved together story.</p>
+        
+        <h2>Backstory</h2>
+        <p>Long ago, before the Spanish Conquista, a "secret" deal was struck. The Caxtilteca (the Spaniards) would capture their prize, and the tens of thousands who helped would became citizens, not slaves. A great city would be founded for them to rule - the Loyal City of Tlaxcala. They even sailed across the ocean and were granted freedom from tribute from the King himself.</p>
+        
+        <p>But when push comes to shove, how long do friendships really last?</p>
+      </div>
 
- <p>But when push comes to shove, how long do friendships really last?
-</p>
-</div>
-<div>
-<iframe  class="yt-embed" src="https://www.youtube.com/embed/jdjBDh2ZpCg?si=WAd1OSML23aZi2_j" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</iframe>
-</div>
-</div>
-<div class="center-bottom">
-  <h3>Support!</h3>
-  <p>If you'd like to help speed along development and support a struggling solo game dev, please consider joining my Patreon! If you join at $10 a month, I'll send you monthly postcards with special art, stickers, or stories you won't be able to get anywhere else.
-     </p>
-     <button onclick="window.location.href='https://www.patreon.com/perebite/membership';" class="button-join">Join today</a>
-<!-- <button onclick="window.location.href='./caxtilteca-presskit.html';">View Press Kit</button> -->
-</div>
+      <div>
+        <div class="video-container">
+          <iframe 
+            src="https://www.youtube.com/embed/jdjBDh2ZpCg?si=WAd1OSML23aZi2_j" 
+            title="Caxtilteca Trailer"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
 
-</main>
-      <footer-component></footer-component>
+    <!-- Instagram Embed Section -->
+    <div class="center-bottom">
+      <h3>Follow Development</h3>
+      <p>Check out behind-the-scenes content and updates on Instagram:</p>
+      
+      <div class="instagram-embed">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/caxtiltecaofficial/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+        </blockquote>
+      </div>
+    </div>
 
+    <div class="center-bottom">
+      <h3>Support!</h3>
+      <p>If you'd like to help speed along development and support a struggling solo game dev, please consider joining my Patreon! If you join at $10 a month, I'll send you monthly postcards with special art, stickers, or stories you won't be able to get anywhere else.</p>
+      
+      <button onclick="window.open('https://www.patreon.com/perebite/membership', '_blank');" class="button-join">
+        Join today
+      </button>
+    </div>
+  </main>
+
+  <footer-component></footer-component>
+
+  <!-- Instagram embed script -->
+  <script async src="//www.instagram.com/embed.js"></script>
+  <script src="components/header.js" type="text/javascript" defer></script>
+  <script src="components/footer.js" type="text/javascript" defer></script>
 </body>
 </html>
