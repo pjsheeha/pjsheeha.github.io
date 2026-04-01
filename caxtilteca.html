@@ -125,7 +125,17 @@
       color: white;
       padding: 5px;
       font-family: "Wellfleet", serif;
-
+    }
+ 
+    .steam-widget-container {
+      width: 100%;
+      max-width: 646px;
+      overflow: hidden;
+    }
+ 
+    .steam-widget-container iframe {
+      width: 100%;
+      min-width: 100%;
     }
     .button-join {
       background: black;
@@ -142,40 +152,86 @@
       background: #333;
     }
     .title-card {
-      width: 30vw;
-      min-width: 300px;
+
+width: 100%; max-width: 500px;
+height: auto;
       justify-content: center;
       margin: 0 auto;
+
       display: block;
 
     }
+    /* Mobile styles */
+ 
     /* Mobile styles */
     @media (max-width: 768px) {
       h1 {
         font-size: 2rem;
       }
-
+ 
+      h2 {
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
+      }
+ 
+      h3 {
+        font-size: 1.3rem;
+      }
+ 
       p {
         font-size: 1rem;
       }
-
+ 
       main {
         padding: 15px;
       }
-
+ 
       .split-body {
         grid-template-columns: 1fr;
         gap: 20px;
       }
-
+ 
       .center-top {
         padding: 20px 0;
       }
-
+ 
       .center-bottom {
         padding: 20px 0;
       }
-        
+ 
+      .title-card {
+        max-width: 90vw;
+      }
+ 
+      .button-join {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+        width: 100%;
+        max-width: 300px;
+      }
+ 
+      .instagram-embed {
+        min-height: 500px;
+      }
+    }
+ 
+    /* Extra small mobile */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+ 
+      h2 {
+        font-size: 1.3rem;
+      }
+ 
+      p {
+        font-size: 0.95rem;
+      }
+ 
+      main {
+        padding: 10px;
+      }
     }
     .caxtilteca-page { 
 background-color: #fff0ce;
@@ -194,12 +250,14 @@ background-image: url(images/light-paper-fibers.png);
     <div class="split-body">
       <div>
         <h2>Wishlist on Steam!</h2>
+        <div class="steam-widget-container">
 
-<iframe src="https://store.steampowered.com/widget/3840280/" 
-        frameborder="0" 
-        width="646" 
-        height="190">
-</iframe>
+    <iframe src="https://store.steampowered.com/widget/3840280/" 
+            frameborder="0" 
+            width="100%" 
+            height="190">
+    </iframe>
+    </div>
         <h2>About the Game</h2>
         <p>Caxtilteca is a 4 player mini RTS set in colonial Mexico. Play as Tlaxcalan dukes defending themselves against their former friends and allies for land. The only way to do this is to organize your army of peasants, knights, and towers to the most efficient arrangement for money collection while also constantly juggling your opponents who have the exact same goal.</p>
         
