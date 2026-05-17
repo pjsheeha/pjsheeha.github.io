@@ -398,8 +398,15 @@
         <img id="lightbox-img" src="" alt="">
     </div>
 
-    <script src="categories.js"></script>
+    <script src="categories-1.js"></script>
     <script>
+      cats.forEach(cat => {
+    cat.slug = cat.title
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')   // replace non‑alphanumeric sequences with a dash
+        .replace(/^-|-$/g, '');        // trim leading/trailing dashes
+          });
+
         // DOM elements
         const container = document.getElementById('projectsContainer');
         const modal = document.getElementById('myModal');
@@ -529,6 +536,8 @@
             }
 
             modal.style.display = 'block';
+            window.location.hash = 'project=' + cat.slug;
+
         }
 
         // Lightbox functions
@@ -571,44 +580,67 @@
         });
 
         // Close modal
-        closeBtn.onclick = () => modal.style.display = 'none';
-        window.onclick = (e) => {
-            if (e.target == modal) modal.style.display = 'none';
-        };
+      closeBtn.onclick = () => {
+          modal.style.display = 'none';
+          window.location.hash = '';   // clear project from URL
+      };
+      window.onclick = (e) => {
+          if (e.target == modal) {
+              modal.style.display = 'none';
+              window.location.hash = '';
+          }
+      };
 
-        // Filter function
-        function filterSelection(category) {
-            const cards = document.getElementsByClassName('filterDiv');
-            const filter = category === 'all' ? '' : category;
+function filterSelection(category) {
+    const cards = document.getElementsByClassName('filterDiv');
+    const filter = category === 'all' ? '' : category;
 
-            for (let card of cards) {
-                card.classList.add('hidden');
-                if (filter === '' || card.classList.contains(filter)) {
-                    card.classList.remove('hidden');
-                }
-            }
-
-            const btns = document.getElementsByClassName('btn');
-            for (let btn of btns) {
-                btn.classList.remove('active');
-                if (btn.textContent.trim().toLowerCase() === category || 
-                    (category === 'all' && btn.textContent.trim().toLowerCase() === 'all')) {
-                    btn.classList.add('active');
-                }
-            }
+    for (let card of cards) {
+        card.classList.add('hidden');
+        if (filter === '' || card.classList.contains(filter)) {
+            card.classList.remove('hidden');
         }
+    }
+
+    // Highlight the correct button
+    const btns = document.getElementsByClassName('btn');
+    for (let btn of btns) {
+        btn.classList.remove('active');
+        // Strip any leading arrow/space from the button text
+        const cleanText = btn.textContent.replace(/^[⬇▶\s]+/, '').toLowerCase();
+        if (cleanText === category || (category === 'all' && cleanText === 'all')) {
+            btn.classList.add('active');
+        }
+    }
+
+    // Update the URL hash (so the filter is shareable)
+    window.location.hash = category === 'all' ? '' : 'filter=' + category;
+}
 
         // Initialize
         renderCards();
-        filterSelection('all');
-
-        // Attach filter button listeners
-        document.querySelectorAll('.btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const category = this.textContent.trim().toLowerCase();
+        //filterSelection('all');
+        function applyHash() {
+            const hash = window.location.hash.substring(1); // remove '#'
+            if (hash.startsWith('filter=')) {
+                const category = hash.split('=')[1];
                 filterSelection(category);
-            });
-        });
+            } else if (hash.startsWith('project=')) {
+                const slug = hash.split('=')[1];
+                const cat = cats.find(c => c.slug === slug);
+                if (cat) {
+                    filterSelection('all');   // make sure the card is visible
+                    openModal(cat);
+                }
+            } else {
+                filterSelection('all');
+            }
+        }
+
+        // Run after rendering
+        applyHash();
+        // Attach filter button listeners
+
     </script>
     
 </body>
