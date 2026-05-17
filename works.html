@@ -1,189 +1,615 @@
-
 <!DOCTYPE html>
-<meta charset="UTF-8">
-<meta name="description" content="Streamer's Delight">
-<meta name="keywords" content="streamers,delight,streamers delight,perebite">
-<meta name="author" content="perebite">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <script src="categories.js"></script>
-
+<html lang="en">
 <head>
-	<style>
-/* Style the buttons */
+    <meta charset="UTF-8">
+    <meta name="description" content="Peter Sheehan - Portfolio of works in games, performances, installations, and more">
+    <meta name="keywords" content="perebite, portfolio, games, art, performances">
+    <meta name="author" content="perebite">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peter Sheehan · Portfolio</title>
+    <style>
+        :root {
+            --bg: #000;
+            --text: #fff;
+            --accent: purple;
+            --border-light: #fff;
+            --border-dark: #000;
+            --font: 'Courier New', Courier, monospace;
+        }
 
-.filterDiv {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  color: #ffffff;
-  font-family: "Courier";
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font);
+            padding: 1rem;
+        }
 
-  display: none;
-}
+        header {
+            text-align: center;
+            padding: 2rem 0 1rem;
+            border-bottom: 1px solid #333;
+            margin-bottom: 2rem;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text);
+        }
+        header p {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
 
-.show {
-  display: block;
-}
+        /* Filter Buttons */
+        #myBtnContainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
 
-.container {
-  margin-top: 20px;
-  overflow: hidden;
-}
+        .btn {
+            border: 2px solid var(--border-light);
+            border-bottom: 2px solid var(--border-dark);
+            border-radius: 0 0 12px 12px;
+            padding: 0.5rem 1rem;
+            font-family: var(--font);
+            font-size: 0.8rem;
+            background: #111;
+            color: var(--text);
+            cursor: pointer;
+            transition: 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .btn:hover {
+            background: #222;
+            color: #fff;
+            border-color: #fff;
+        }
+        .btn.active {
+            background: #444;
+            border-color: #fff;
+            color: white;
+        }
 
+        /* Project Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
 
+        .project-card {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+            border-color: #666;
+        }
 
-.btn {
-  border-top: 5px solid white;
-    border-bottom: 5px solid black;
-    border-left: 5px solid white;
-    border-right: 5px solid white;
-border-radius: 15px 15px 0px 0px;
-  outline: none;
-  font-size:10px;
-  padding: 12px 5px;
-  color:white;
-  font-family: "courier";
+        .card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: #1a1a1a;
+            display: block;
+            border-bottom: 1px solid #333;
+        }
 
-  background-color: black;
-  cursor: pointer;
-}
-.link_work {
-  color: purple;
-}
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
+        .card-body {
+            padding: 1rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
 
-  font-family:"courier";
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-/* Modal Content */
-.modal-content {
-  background-color: #fefefe;
-    border: 15px solid white;
-  border-radius:25px;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+            color: #fff;
+        }
 
-}
+        .card-date {
+            font-size: 0.7rem;
+            color: #aaa;
+            margin-bottom: 0.8rem;
+        }
 
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            margin-top: auto;
+        }
+        .tag {
+            background: #222;
+            color: #ccc;
+            font-size: 0.65rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            border: 1px solid #444;
+            text-transform: uppercase;
+        }
 
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-.btn:hover {
-  background-color: #fff;
-  color:black;
-}
-a{
-      color: #2F4F4F;
-  font-family: "Courier";
-  text-decoration: none;
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
 
-}
-h1:hover {
-  cursor:pointer;
-    color: #ffffff;
-  font-family: "Courier";
+        .modal-content {
+            background-color: #111;
+            border: 2px solid #555;
+            border-radius: 12px;
+            margin: 5% auto;
+            padding: 2rem;
+            width: 90%;
+            max-width: 800px;
+            color: var(--text);
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
 
-  text-decoration: underline;
-}
+        .close {
+            position: absolute;
+            right: 1rem;
+            top: 0.5rem;
+            color: #aaa;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .close:hover {
+            color: #fff;
+        }
 
-img {
-  display: block;
-  max-width:40%;
-  max-height:40%;
-  width: auto;
-  height: auto;
-}
-.btn.active {
-  background-color: #666;
-  color: white;
-}
-.democlass {
-  color: red;
-}
-</style>
-  <script src="components/header.js" type="text/javascript" defer></script>
-<script>
-// Check if page is in an iframe and hide header if it is
-document.addEventListener('DOMContentLoaded', function() {
-  const isInIframe = window.self !== window.top;
-  
-  if (isInIframe) {
-    const headerElement = document.querySelector('header-component');
-    if (headerElement) {
-      headerElement.style.display = 'none';
-    }
-  }
-});
-</script>
+        #modalTitle {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        #modalDate {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        #modalDescription {
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            white-space: pre-wrap;
+        }
 
+        /* YouTube embed styling */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            margin-bottom: 1rem;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        #modalImages {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        #modalImages img {
+            max-width: 100%;
+            max-height: 200px;
+            border: 1px solid #444;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        #modalImages img:hover {
+            transform: scale(1.02);
+        }
+        #modalLinks a {
+            display: inline-block;
+            margin-right: 1rem;
+            color: var(--accent);
+            text-decoration: underline;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        #modalLinks a:hover {
+            color: #ff69b4;
+        }
+
+        /* Lightbox (slideshow) */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            text-align: center;
+        }
+        .lightbox.active {
+            display: block;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80vh;
+            margin: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px solid #fff;
+            box-shadow: 0 0 25px rgba(0,0,0,0.7);
+        }
+        .lightbox .lb-close,
+        .lightbox .lb-prev,
+        .lightbox .lb-next {
+            position: absolute;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+            z-index: 10;
+        }
+        .lightbox .lb-close {
+            top: 20px;
+            right: 30px;
+        }
+        .lightbox .lb-prev {
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .lightbox .lb-next {
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .lightbox .lb-close:hover,
+        .lightbox .lb-prev:hover,
+        .lightbox .lb-next:hover {
+            color: #ccc;
+        }
+
+        /* Utility */
+        .hidden {
+            display: none !important;
+        }
+        nav {
+          height: 0px;
+          display: flex;
+          align-items: center;
+          justify-content: left;
+          background-color:  #0a0a23;
+        }
+
+        ul {
+          padding: 0;
+          display:flex;
+        }
+
+        a {
+          font-weight: 700;
+          margin: 0 25px;
+          color: #9b9b9b;
+          text-decoration: none;
+        }
+
+        a:hover {
+          padding-bottom: 5px;
+          box-shadow: inset 0 -2px 0 0 #929292;
+        }
+        @media (max-width: 600px) {
+            .btn {
+                font-size: 0.7rem;
+                padding: 0.4rem 0.6rem;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
+<body>
 
+    <header>
+        <nav>
+          <ul>
+            <a href="index.html">Home</a>
+          </ul>
+        </nav>
+        <h1>Peter Sheehan</h1>
+        <p>Games · Performances · Installations · Videos · Sculptures · Webpages</p>
+    </header>
 
-<body style = "background-color: black" >
-  <header-component></header-component>
-<div id="myBtnContainer">
-  <button class="btn active" onclick="filterSelection('all')"> ⬇ Show all</button>
-  <button class="btn" onclick="filterSelection('games')"> ⬇ Games</button>
-  <button class="btn" onclick="filterSelection('performances')"> ⬇ Performances</button>
-  <button class="btn" onclick="filterSelection('installations')"> ⬇ Installation</button>
-  <button class="btn" onclick="filterSelection('images')"> ⬇ Design</button>
-    <button class="btn" onclick="filterSelection('essays')"> ⬇ Essays</button>
-      <button class="btn" onclick="filterSelection('videos')"> ⬇ Videos</button>
-        <button class="btn" onclick="filterSelection('animations')"> ⬇ Animations</button>
-          <button class="btn" onclick="filterSelection('sculptures')"> ⬇ Sculptures</button>
-            <button class="btn" onclick="filterSelection('webpages')"> ⬇ Webpages</button>
+    <div id="myBtnContainer">
+        <button class="btn active" onclick="filterSelection('all')">All</button>
+        <button class="btn" onclick="filterSelection('games')">Games</button>
+        <button class="btn" onclick="filterSelection('performances')">Performances</button>
+        <button class="btn" onclick="filterSelection('installations')">Installations</button>
+        <button class="btn" onclick="filterSelection('design')">Design</button>
+        <button class="btn" onclick="filterSelection('essays')">Essays</button>
+        <button class="btn" onclick="filterSelection('videos')">Videos</button>
+        <button class="btn" onclick="filterSelection('animations')">Animations</button>
+        <button class="btn" onclick="filterSelection('sculptures')">Sculptures</button>
+        <button class="btn" onclick="filterSelection('webpages')">Webpages</button>
+    </div>
 
+    <div class="projects-grid" id="projectsContainer"></div>
 
+    <!-- Project details modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalTitle"></div>
+            <div id="modalDate"></div>
+            <div id="modalDescription"></div>
+            <div id="modalImages"></div>
+            <div id="modalLinks"></div>
+        </div>
+    </div>
 
+    <!-- Lightbox for image slideshow -->
+    <div id="lightbox" class="lightbox">
+        <span class="lb-close">&times;</span>
+        <span class="lb-prev">&#10094;</span>
+        <span class="lb-next">&#10095;</span>
+        <img id="lightbox-img" src="" alt="">
+    </div>
 
+    <script src="categories.js"></script>
+    <script>
+        // DOM elements
+        const container = document.getElementById('projectsContainer');
+        const modal = document.getElementById('myModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDate = document.getElementById('modalDate');
+        const modalDesc = document.getElementById('modalDescription');
+        const modalImages = document.getElementById('modalImages');
+        const modalLinks = document.getElementById('modalLinks');
+        const closeBtn = document.getElementsByClassName('close')[0];
 
+        // Lightbox elements
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lbClose = document.querySelector('.lb-close');
+        const lbPrev = document.querySelector('.lb-prev');
+        const lbNext = document.querySelector('.lb-next');
+        let currentLightboxImages = [];
+        let currentLightboxIndex = 0;
 
-</div>
+        // Build cards
+        function renderCards() {
+            container.innerHTML = '';
+            cats.forEach((cat, index) => {
+                const card = document.createElement('div');
+                card.className = 'project-card filterDiv';
+                cat.tags.forEach(tag => card.classList.add(tag));
 
-<p id ="text"></p>
-  <!-- Modal content -->
-<div id="myModal" class="modal" >
+                if (cat.imgs && cat.imgs.length > 0) {
+                    const img = document.createElement('img');
+                    img.src = cat.imgs[0];
+                    img.alt = cat.title;
+                    img.className = 'card-img';
+                    img.loading = 'lazy';
+                    card.appendChild(img);
+                } else {
+                    const placeholder = document.createElement('div');
+                    placeholder.className = 'card-img';
+                    placeholder.style.display = 'flex';
+                    placeholder.style.alignItems = 'center';
+                    placeholder.style.justifyContent = 'center';
+                    placeholder.style.background = '#222';
+                    placeholder.textContent = '📁';
+                    card.appendChild(placeholder);
+                }
 
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p id = "title">The title of the work.</p>
-    <p id = "date">The date of the work.</p>
+                const body = document.createElement('div');
+                body.className = 'card-body';
 
-    <p id = "descriptor">the text in the Modal..</p>
-    <div id = "imgTags"></div>
+                const title = document.createElement('div');
+                title.className = 'card-title';
+                title.textContent = cat.title;
+                body.appendChild(title);
 
-        <div id = "links"></div>
+                const date = document.createElement('div');
+                date.className = 'card-date';
+                date.textContent = cat.date;
+                body.appendChild(date);
 
-  </div>
+                const tagsDiv = document.createElement('div');
+                tagsDiv.className = 'card-tags';
+                cat.tags.forEach(tag => {
+                    const span = document.createElement('span');
+                    span.className = 'tag';
+                    span.textContent = tag;
+                    tagsDiv.appendChild(span);
+                });
+                body.appendChild(tagsDiv);
 
-</div>
+                card.appendChild(body);
+                card.addEventListener('click', () => openModal(cat));
+                container.appendChild(card);
+            });
+        }
 
+        // Helper: extract YouTube video ID from URL
+        function getYouTubeId(url) {
+            const regExp = /^.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            const match = url.match(regExp);
+            return (match && match[1].length === 11) ? match[1] : null;
+        }
 
+        // Open modal with project data
+        function openModal(cat) {
+            modalTitle.textContent = cat.title;
+            modalDate.textContent = cat.date;
+            modalDesc.textContent = cat.description;
 
+            // Images (clickable for lightbox)
+            modalImages.innerHTML = '';
+            if (cat.imgs && cat.imgs.length > 0) {
+                cat.imgs.forEach((src, idx) => {
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.alt = cat.title;
+                    img.addEventListener('click', (e) => {
+                        e.stopPropagation(); // prevent closing modal
+                        openLightbox(cat.imgs, idx);
+                    });
+                    modalImages.appendChild(img);
+                });
+            }
+
+            // Links: YouTube videos embedded, others as links
+            modalLinks.innerHTML = '';
+            if (cat.links && cat.links.length > 0) {
+                cat.links.forEach((link, i) => {
+                    const videoId = getYouTubeId(link);
+                    if (videoId) {
+                        // YouTube embed
+                        const wrapper = document.createElement('div');
+                        wrapper.className = 'video-wrapper';
+                        const iframe = document.createElement('iframe');
+                        iframe.src = `https://www.youtube.com/embed/${videoId}`;
+                        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+                        iframe.allowFullscreen = true;
+                        wrapper.appendChild(iframe);
+                        modalLinks.appendChild(wrapper);
+                    } else {
+                        const a = document.createElement('a');
+                        a.href = link;
+                        a.target = '_blank';
+                        a.rel = 'noopener';
+                        a.textContent = `Link ${i+1}`;
+                        modalLinks.appendChild(a);
+                    }
+                });
+            }
+
+            modal.style.display = 'block';
+        }
+
+        // Lightbox functions
+        function openLightbox(images, index) {
+            currentLightboxImages = images;
+            currentLightboxIndex = index;
+            lightboxImg.src = images[index];
+            lightbox.classList.add('active');
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            lightboxImg.src = '';
+        }
+
+        function showPrevLightbox() {
+            if (currentLightboxImages.length === 0) return;
+            currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxImages.length) % currentLightboxImages.length;
+            lightboxImg.src = currentLightboxImages[currentLightboxIndex];
+        }
+
+        function showNextLightbox() {
+            if (currentLightboxImages.length === 0) return;
+            currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxImages.length;
+            lightboxImg.src = currentLightboxImages[currentLightboxIndex];
+        }
+
+        // Lightbox event listeners
+        lbClose.addEventListener('click', closeLightbox);
+        lbPrev.addEventListener('click', showPrevLightbox);
+        lbNext.addEventListener('click', showNextLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') showPrevLightbox();
+            if (e.key === 'ArrowRight') showNextLightbox();
+        });
+
+        // Close modal
+        closeBtn.onclick = () => modal.style.display = 'none';
+        window.onclick = (e) => {
+            if (e.target == modal) modal.style.display = 'none';
+        };
+
+        // Filter function
+        function filterSelection(category) {
+            const cards = document.getElementsByClassName('filterDiv');
+            const filter = category === 'all' ? '' : category;
+
+            for (let card of cards) {
+                card.classList.add('hidden');
+                if (filter === '' || card.classList.contains(filter)) {
+                    card.classList.remove('hidden');
+                }
+            }
+
+            const btns = document.getElementsByClassName('btn');
+            for (let btn of btns) {
+                btn.classList.remove('active');
+                if (btn.textContent.trim().toLowerCase() === category || 
+                    (category === 'all' && btn.textContent.trim().toLowerCase() === 'all')) {
+                    btn.classList.add('active');
+                }
+            }
+        }
+
+        // Initialize
+        renderCards();
+        filterSelection('all');
+
+        // Attach filter button listeners
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const category = this.textContent.trim().toLowerCase();
+                filterSelection(category);
+            });
+        });
+    </script>
+    
 </body>
 </html>
-  <script src= "javascript2.js"></script>
-
