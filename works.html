@@ -350,6 +350,7 @@
             }
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
 
@@ -406,6 +407,7 @@
         .replace(/[^a-z0-9]+/g, '-')   // replace non‑alphanumeric sequences with a dash
         .replace(/^-|-$/g, '');        // trim leading/trailing dashes
           });
+        let currentFilter = 'all';  // will be updated whenever a filter is applied
 
         // DOM elements
         const container = document.getElementById('projectsContainer');
@@ -592,6 +594,8 @@
       };
 
 function filterSelection(category) {
+    currentFilter = category;
+
     const cards = document.getElementsByClassName('filterDiv');
     const filter = category === 'all' ? '' : category;
 
@@ -616,7 +620,83 @@ function filterSelection(category) {
     // Update the URL hash (so the filter is shareable)
     window.location.hash = category === 'all' ? '' : 'filter=' + category;
 }
+function generatePDF() {
+    const filtered = cats.filter(cat => currentFilter === 'all' || cat.tags.includes(currentFilter));
+    if (filtered.length === 0) {
+        alert('No projects to export in this category.');
+        return;
+    }
 
+    let html = '<div style="font-family: sans-serif; padding: 20px; max-width: 800px; margin: auto;">';
+    html += '<h1 style="text-align:center; margin-bottom: 10px;">Peter Sheehan – Portfolio</h1>';
+    html += `<h2 style="text-align:center; color: #555; margin-bottom: 30px;">Category: ${
+        currentFilter === 'all' ? 'All Works' : currentFilter.charAt(0).toUpperCase() + currentFilter.slice(1)
+    }</h2>`;
+
+    filtered.forEach(proj => {
+        html += '<div style="margin-bottom: 40px; border-bottom: 1px solid #ccc; padding-bottom: 20px;">';
+        html += `<h3>${proj.title}</h3>`;
+        html += `<p style="color: #666;">${proj.date}</p>`;
+        html += `<p style="white-space: pre-wrap;">${proj.description}</p>`;
+        if (proj.imgs && proj.imgs.length > 0) {
+            html += '<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px;">';
+            proj.imgs.forEach(src => {
+                html += `<img src="${src}" style="max-width: 200px; max-height: 150px; border: 1px solid #ddd;" crossorigin="anonymous" />`;
+            });
+            html += '</div>';
+        }
+        if (proj.links && proj.links.length > 0) {
+            html += '<p><strong>Links:</strong></p><ul>';
+            proj.links.forEach(link => {
+                html += `<li><a href="${link}">${link}</a></li>`;
+            });
+            html += '</ul>';
+        }
+        html += '</div>';
+    });
+    html += '</div>';
+
+    const tempDiv = document.createElement('div');
+    tempDiv.style.position = 'absolute';
+    tempDiv.style.left = '-9999px';
+    tempDiv.style.top = '0';
+    tempDiv.style.width = '800px';
+    tempDiv.style.backgroundColor = 'white';
+    tempDiv.style.color = 'black';
+    tempDiv.innerHTML = html;
+    document.body.appendChild(tempDiv);
+
+    // Wait for all images to load
+    const images = Array.from(tempDiv.querySelectorAll('img'));
+    const imagePromises = images.map(img => {
+        return new Promise(resolve => {
+            if (img.complete) resolve();
+            else {
+                img.onload = resolve;
+                img.onerror = resolve; // continue even if image fails
+            }
+        });
+    });
+
+    Promise.all(imagePromises).then(() => {
+        const opt = {
+            margin: 10,
+            filename: `portfolio-${currentFilter}.pdf`,
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: {
+                scale: 2,
+                useCORS: false,       // ✅ no CORS needed for local files
+                allowTaint: true,     // ✅ allow drawing images as-is
+                logging: false
+            },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+
+        html2pdf().set(opt).from(tempDiv).save().then(() => {
+            document.body.removeChild(tempDiv);
+        });
+    });
+}
         // Initialize
         renderCards();
         //filterSelection('all');
@@ -642,6 +722,7 @@ function filterSelection(category) {
         // Attach filter button listeners
 
     </script>
-    
+    <button class="btn" id="pdfBtn" onclick="generatePDF()">⬇ Download PDF</button>
+
 </body>
 </html>
